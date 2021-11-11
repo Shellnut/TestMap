@@ -108,6 +108,9 @@
          .navbar {
             position: static;
          }
+         .my-dropdown {
+            z-index: 1001;
+         }
          .legend {
             line-height: 18px;
             color: #555;
@@ -136,7 +139,6 @@
                border-radius: 2px;
             }
          }
-
       </style>
    </head>
    <body ng-app="myApp" ng-controller="myCtrl">
@@ -157,10 +159,12 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav navbar-right">
+                  <!-- Calendar -->
+                  <li><a href="#" ng-click="calendarModal()"><i class="fa fa-calendar"></i></a></li>
                   <!-- Toggle Icon -->
                   <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings <i class="fa fa-gear"></i><span class="caret"></span></a>
-                     <ul class="dropdown-menu">
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-show="showPasses !== 'all'">({{showPasses}}) </span><i class="fa fa-gear"></i><span class="caret"></span></a>
+                     <ul class="dropdown-menu my-dropdown">
                         <li class="dropdown-header">Toggle Icon</li>
                         <li>
                            <a href="javascript:void(0);">
@@ -202,13 +206,40 @@
                               </label>
                            </a>
                         </li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Show Video Metrics</li>
+                        <li role="seperator" class="divider"></li>
+                        <li class="dropdown-header">Ski Pass</li>
                         <li>
-                           <a href="javascript:void(0);">
-                                 <label class="checkbox-inline"><input type="checkbox" value="" ng-change="updateMetrics()" ng-model="showMetrics"> Show Video Metrics?</label>
-                           </a>
-                        </li>
+                            <li>
+                               <a href="javascript:void(0);">
+                                  <input type="radio" name="all" ng-change="updatePasses()" ng-model="showPasses" value="all"> 
+                                  <span>Show All</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);">
+                                  <input type="radio" name="Epic" ng-change="updatePasses()" ng-model="showPasses" value="Epic">
+                                  <span>Epic</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);">
+                                  <input type="radio" name="Ikon" ng-change="updatePasses()" ng-model="showPasses" value="Ikon">
+                                  <span>Ikon</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);">
+                                  <input type="radio" name="Mountain Collective" ng-change="updatePasses()" ng-model="showPasses" value="Mountain Collective">
+                                  <span>Mountain Collective</span>
+                               </a>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);">
+                                  <input type="radio" name="Powder Alliance" ng-change="updatePasses()" ng-model="showPasses" value="Powder Alliance">
+                                  <span>Powder Alliance</span>
+                               </a>
+                            </li>
+                         </li>
                      </ul>
                   </li>
                 </ul>
@@ -222,7 +253,7 @@
 
             <!-- Progress -->
             <div>
-               <p>Johnathan has visited {{visitedCount}} out of the {{skiResortCount | number:0}}<a class="disclaimer-count" href="#change-log" uib-tooltip="This number is subject to change. See 'Change Log' at the bottom of this page for more information.">*</a> <span ng-show="!showGlobal">U.S.</span><span ng-show="showGlobal">global</span> ski resorts so far! <i>last updated: {{lastUpdated}}</i></p>
+               <p>Johnathan has visited {{visitedCount}} out of the {{skiResortCount | number:0}}<a class="disclaimer-count" ng-click="goToChangeLog()" uib-tooltip="This number is subject to change. See 'Change Log' at the bottom of this page for more information.">*</a> <span ng-show="!showGlobal">U.S.</span><span ng-show="showGlobal">global</span> ski resorts so far! <i>last updated: {{lastUpdated}}</i></p>
             </div>
 
             <!-- Search column -->
@@ -412,11 +443,11 @@
             </div>
 
             <div id='newResortsBySeason'></div>
-            <div id='viewMetrics' ng-show="showMetrics">
-               <h3>Johnathan's YouTube Video View Count Stats</h3>
+            <!-- <div id='viewMetrics' ng-show="showMetrics"> -->
+               <!-- <h3>Johnathan's YouTube Video View Count Stats</h3>
                <p>Video view metrics were last updated on {{newResortStatsLastUpdated}}</p>
                <p><i> - Video view counts are cummulative. For example, Season 4 videos have been gathering views on YouTube since Season 4.</i></p>
-               <p><i> - These video view counts are strictly videos from the resort map. Family vlogs, live streams, mountain bike videos, etc. are not included in these metrics.</i></p>
+               <p><i> - These video view counts are strictly videos from the resort map. Family vlogs, live streams, mountain bike videos, etc. are not included in these metrics.</i></p> -->
                <div id='viewsBySeason'></div>
                <div id='videosBySeason'></div>
                <div id='viewsTotalBySeason'></div>
@@ -430,12 +461,14 @@
                <li>If Johnathan can go to 40 new resorts a season, he'll finish the U.S. resorts by 2031. Good luck Johnathan!</li>
                <li>Season 0 is considered the videos on his channel before he started making the vlogs (2011-2016).</li>
                <li>Live streams, family vlogs, mountain biking, wakeboarding, skateboarding videos, etc. are not included in this website.</li>
-               <li>If you have any suggestions or questions, feel free to email me (see bottom right of this page).</li>
+               <li>If you have any suggestions or questions, feel free to email Kenny <a href="mailto:shellnut@gmail.com?subject=Buckhouse Ski Map" target="_top"> shellnut@gmail.com</a>.</li>
             </ul>
 
             <p id="change-log"><b>Change Log:</b></p>
             <ul>
                <li>The original U.S. resort list came from <a href="https://en.wikipedia.org/wiki/List_of_ski_areas_and_resorts_in_the_United_States" target="_blank">Wikipedia</a>. The list on this site will continue to be fine tuned as time goes on.</li>
+               <li>11/03/21 - Added Mount Pleasant of Edinboro in Pennsylvania.</li>
+               <li>10/25/21 - Seperated Jack Frost Ski Area from Big Boulder Mountain. Added Epic to Mar River, Ohio.</li>
                <li>10/09/21 - Removed Mountain View at Edinboro because it's a cross county only ski resort.</li>
                <li>10/07/21 - Added Gladstone Sports Park. Removed Sleepy Hollow Sports Park. Added Helicopter icon to Silverton.</li>
                <li>10/03/21 - Added Maple Ski Ridge near Schenectady, NY. Renamed Hidden Valley Ski center in Vernon, NJ to National Winter Activity Center.</li>
@@ -461,7 +494,7 @@
                      <a href="https://twitter.com/johnbuckhouse" target="_blank"><i class="fa fa-twitter"></i></a>
                </p>
                <p class="navbar-text pull-right">
-                  Suggestions? <a href="mailto:shellnut@gmail.com?subject=Buckhouse Ski Map">Email Kenny</a>
+                  Suggestions? <a href="mailto:shellnut@gmail.com?subject=Buckhouse Ski Map" target="_top">shellnut@gmail.com</a>
                </p>
          </div>
                     
@@ -525,6 +558,7 @@
                });
                globalWarningModal.result.then(function() {
                   localStorage.setItem('showGlobal', '1');
+                  localStorage.setItem('showPasses', 'all')
                   location.reload(); 
                }, function () {
                   $scope.showGlobal = false;
@@ -570,6 +604,24 @@
                }
           }
 
+          // Get pass options from localStorage
+          $scope.showPasses = localStorage.getItem('showPasses');
+
+          if (showPasses && showPasses !=='all') {
+            $scope.allData = JSON.parse(JSON.stringify(allData)).filter(val => val.skiPass.includes($scope.showPasses));
+          }
+          else {
+            $scope.showPasses = 'all';
+          }
+
+          $scope.updatePasses = function() {
+             if ($scope.showPasses !=='all') {
+               localStorage.setItem('showGlobal', '');
+             }
+             localStorage.setItem('showPasses', $scope.showPasses);
+             location.reload();
+          }
+
          // Get truthy or falsy value from localStorage
          $scope.showRegions = !!localStorage.getItem('showRegions');
 
@@ -598,16 +650,21 @@
             }
          }
 
-         // show metrics
-         $scope.showMetrics = false;
-
-         $scope.updateMetrics = function() {
-            if ($scope.showMetrics) {
-               setTimeout(function() {
-                  document.getElementById("viewMetrics").scrollIntoView();               
-               }, 0);
-            }
+         // Scroll to change log
+         $scope.goToChangeLog = function() {
+            document.getElementById("change-log").scrollIntoView(); 
          }
+
+         // // show metrics
+         // $scope.showMetrics = false;
+
+         // $scope.updateMetrics = function() {
+         //    if ($scope.showMetrics) {
+         //       setTimeout(function() {
+         //          document.getElementById("viewMetrics").scrollIntoView();               
+         //       }, 0);
+         //    }
+         // }
 
          // Custom sort for table
          $scope.myOrder = function(field) {
@@ -777,6 +834,9 @@
                                  <p><b>What is the Buckhouse Ski Map?</b></p>
                                  <p>This website is a resource for learning more about ski resorts (big or small) through Johnathan's vlogs, trick breakdowns as well as resort reviews.</p>
                                  <br>  
+                                 <p><b>How do I get my name on the map?</b></p>
+                                 <p>See Johnathan's <a href="https://www.youtube.com/channel/UC_i8SQjQOrPUpD3tpjMEuAw/join" target="_blank">YouTube Membership</a> page of level DREAMER for more information.</p>
+                                 <br>
                                  <p><b>What do the colors on the map mean?</b></p>
                                  <ul class="list-unstyled">
                                     <li>
@@ -792,9 +852,12 @@
                                  <br>                                  
                                  <p><b>What is the goal of this website?</b></p>
                                  <p>The goal of this website is to become the most comprehensive U.S. ski resort database on the internet.</p>
+                                 <br>
+                                 <p><b>How can I support this goal?</b></p>
+                                 <p>You can support Johnathan by joining his <a href="https://www.youtube.com/channel/UC_i8SQjQOrPUpD3tpjMEuAw/join" target="_blank">YouTube Membership</a> or his <a href="https://www.patreon.com/JohnathanBuckhouse" target="_blank">Patreon</a>.</p>
                                  <br>                                 
                                  <p><b>How can I help improve this website?</b></p>
-                                 <p>Feedback is welcome and apperciated! <a href="mailto:shellnut@gmail.com?subject=Buckhouse Ski Map">Email Kenny</a> with any suggestions or questions. If you're a developer, check out the <a target="_blank" href="https://github.com/Shellnut/Buckhouse">Github</a>.</p>
+                                 <p>Feedback is welcome and apperciated! Email Kenny <a href="mailto:shellnut@gmail.com?subject=Buckhouse Ski Map">shellnut@gmail.com</a> with any suggestions or questions. If you're a developer, check out the <a target="_blank" href="https://github.com/Shellnut/Buckhouse">Github</a>.</p>
                               </div>
                               <div class="modal-footer">
                                  <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
@@ -807,6 +870,35 @@
             });
          }
 
+         $scope.calendarModal = function() {
+            var calendarModal = $uibModal.open({
+                  animation: $scope.animationsEnabled,
+                  template: `<div class="modal-header">
+                                 <h3 class="modal-title">
+                                    <div class="row">
+                                       <div class="col-xs-11">
+                                          <span><i class="fa fa-calendar" aria-hidden="true"></i> Travel</span>
+                                       </div>
+                                       <div class="col-xs-1">
+                                          <button class="btn btn-sm" style="float:right; clear:all;" ng-click="ok()">X</button>
+                                       </div>
+                                    </div>
+                                 </h3>
+                              </div>
+                              <div class="modal-body">
+                                 <iframe src="https://calendar.google.com/calendar/embed?src=rdkd4s84utuaidn2fejb36jn8o%40group.calendar.google.com&ctz=America%2FDenver" style="border: 0" width="100%" height="100%" frameborder="0" scrolling="no"></iframe>
+                              </div>
+                              <div class="modal-footer">
+                                 <button class="btn btn-primary" type="button" ng-click="ok()">Close</button>
+                              </div>`,
+                  controller: 'CalendarModal'
+               });
+               calendarModal.result.then(function() {
+                  // console.log('done!');
+               }, function () {
+            });
+         }
+
          $scope.toggleAnimation = function () {
             $scope.animationsEnabled = !$scope.animationsEnabled;
          };
@@ -814,6 +906,14 @@
 
       // Info Modal Controller
       app.controller('InfoModal', function($scope, $uibModalInstance) {
+         // Close Modal
+         $scope.ok = function () {
+            $uibModalInstance.close();
+         };
+      })
+
+      // Calendar Modal Controller
+      app.controller('CalendarModal', function($scope, $uibModalInstance) {
          // Close Modal
          $scope.ok = function () {
             $uibModalInstance.close();
@@ -909,13 +1009,11 @@
          var div = L.DomUtil.create('div', 'legend info');
 
          div.innerHTML =
-                  '<b><i class="fa fa-trophy"></i> DREAMER Memberships</b><br>' +
-                  '<span>Mason Crosby</span><br>' +
-                  '<span>Aaron Rodgers</span><br>' +
-                  '<span>Aaron Jones</span><br>' +
-                  '<span>The Denver Broncos</span><br>' +
-                  '<span>Backflipping Benton</span><br>' +
-                  '<span>Johnathan Buckhouse</span>';
+            '<b><i class="fa fa-trophy"></i> DREAMER Memberships</b><br>' +
+            '<span>Aaron Rodgers</span><br>' +
+            '<span>The Green Bay Packers</span><br>' +
+            '<span>Backflipping Benton</span><br>' +
+            '<span>Johnathan Buckhouse</span>';
                   
          return div;
       };
@@ -1053,6 +1151,12 @@
       }
       else {
          allDataMap = JSON.parse(JSON.stringify(allData));
+      }
+
+      // Get pass options from localStorage
+      var showPasses = localStorage.getItem('showPasses');
+      if (showPasses && showPasses !=='all') {
+         allDataMap = JSON.parse(JSON.stringify(allData)).filter(val => val.skiPass.includes(showPasses));
       }
 
       for (var i = 0; i<allDataMap.length; i++) {

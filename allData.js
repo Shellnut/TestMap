@@ -12,7 +12,7 @@
 //       }
 //   }  
 // }
-var lastUpdated = '10/11/2021';
+var lastUpdated = '11/08/2021';
 var allData = [
   {
     "resortName": "Mohawk Mountain Ski Area",
@@ -2983,7 +2983,7 @@ var allData = [
     "skiPass": []
   },
   {
-    "resortName": "Jack Frost Big Boulder",
+    "resortName": "Jack Frost Ski Area",
     "state": "Pennsylvania",
     "region": "Mid-Atlantic",
     "city": "Blakeslee",
@@ -2993,7 +2993,27 @@ var allData = [
       "lng": -75.65579196297945
     },
     "officialSkiResort": true,
-    "id": "13603",
+    "id": "254",
+    "website": "http://www.jfbb.com",
+    "resortReview": {
+      "score": "",
+      "link": "",
+      "note": ""
+    },
+    "skiPass": ["Epic"]
+  },
+  {
+    "resortName": "Big Boulder Mountain",
+    "state": "Pennsylvania",
+    "region": "Mid-Atlantic",
+    "city": "Lake Harmony",
+    "videos": [],
+    "position": {
+      "lat": 41.050245616180355,
+      "lng": -75.601067425094
+    },
+    "officialSkiResort": true,
+    "id": "252",
     "website": "http://www.jfbb.com",
     "resortReview": {
       "score": "",
@@ -3263,6 +3283,26 @@ var allData = [
     "skiPass": ["Epic"]
   },
   {
+    "resortName": "Mount Pleasant of Edinboro",
+    "state": "Pennsylvania",
+    "region": "Mid-Atlantic",
+    "city": "Cambridge Springs",
+    "videos": [],
+    "position": {
+      "lat": 41.8512290595026,
+      "lng": -80.07032250000002
+    },
+    "officialSkiResort": true,
+    "id": "",
+    "website": "https://www.skimountpleasant.com/",
+    "resortReview": {
+      "score": "",
+      "link": "",
+      "note": ""
+    },
+    "skiPass": []
+  },
+  {
     "resortName": "Cloudmont Ski & Golf Resort",
     "state": "Alabama",
     "region": "Southeast",
@@ -3394,7 +3434,8 @@ var allData = [
     "region": "Southeast",
     "city": "Sugar Mountain",
     "videos": [
-      "SUvpR8jJF4M"
+      "SUvpR8jJF4M",
+      "Y2-2iAjBUqE"
     ],
     "position": {
       "lat": 36.13369100484302,
@@ -3404,9 +3445,19 @@ var allData = [
     "id": "290",
     "website": "http://skisugar.com/trailmap/",
     "resortReview": {
-      "score": "",
-      "link": "",
-      "note": ""
+      "score": 41,
+      "link": "Y2-2iAjBUqE",
+      "note": "",
+      "price": "6",
+      "easeOfAccess": "5",
+      "lodging": "5",
+      "chairLifts": "3",
+      "runs": "4",
+      "terrainPark": "1",
+      "food": "6",
+      "employees": "4",
+      "views": "5",
+      "wouldIGoBack": "2",
     },
     "skiPass": []
   },
@@ -5246,7 +5297,7 @@ var allData = [
       "link": "",
       "note": ""
     },
-    "skiPass": []
+    "skiPass": ["Epic"]
   },
   {
     "resortName": "Snow Trails Ski Resort",
@@ -6199,6 +6250,16 @@ var allData = [
     "region": "Rocky Mountains",
     "city": "Keystone",
     "videos": [
+      "Jo5ass9mo5M",
+      "dUeTqo6Z4Q0",
+      "owf8BLAu-p8",
+      "kYgoD-5gaz4",
+      "G0133FxtiP4",
+      "chk3ucoCSr4",
+      "4kQQ8R1nwP0",
+      "L-sbRPcjAO4",
+      "rWMvTc88Wz4",
+      "Q8KnX9ORSSo",
       "Cgbcc1bxn-k",
       "jSjO24IUI7Q",
       "xSnhKk9u7BY",
@@ -6976,6 +7037,15 @@ var allData = [
     "region": "Rocky Mountains",
     "city": "Keystone",
     "videos": [
+      "2Z_npul7H-I",
+      "ifBCj7VF_eo",
+      "8hzRFgnlXeY",
+      "ue3mzuSK7bc",
+      "h37TE9-aRU0",
+      "B4VCAGtNqe0",
+      "ZeBYKuKmP_U",
+      "tQPDdYStSzo",
+      "wEUeSp1NNKA",
       "-3pQCvVuNcU",
       "LPRABi5BhKM",
       "QWZJlriQa6I",
@@ -7649,6 +7719,8 @@ var allData = [
     "region": "Rocky Mountains",
     "city": "Pagosa Springs",
     "videos": [
+      "kDJ9eyKGMB8",
+      "M0zvy8vcAjY",
       "9w2g01-aDZY",
       "IB9d-8ifzEw",
       "JBlns5NbQqg",
@@ -7666,9 +7738,19 @@ var allData = [
     "id": "505",
     "website": "http://www.wolfcreekski.com/",
     "resortReview": {
-      "score": "",
-      "link": "",
-      "note": ""
+      "score": 40,
+      "link": "M0zvy8vcAjY",
+      "note": "",
+      "price": "4",
+      "easeOfAccess": "3",
+      "lodging": "0",
+      "chairLifts": "4",
+      "runs": "6",
+      "terrainPark": "0",
+      "food": "5",
+      "employees": "5",
+      "views": "8",
+      "wouldIGoBack": "5",
     },
     "skiPass": []
   },
@@ -7679,6 +7761,8 @@ var allData = [
     "city": "Georgetown",
     "officialSkiResort": false,
     "videos": [
+      "WCbFS6Qfhmg",
+      "yy10nZW64nI",
       "s3fHFj5QvdM",
       "x8P1B9hncv0",
       "EnIoeo--GZ0",
@@ -9031,7 +9115,7 @@ var allData = [
       "views": "6",
       "wouldIGoBack": "6",
     },
-    "skiPass": []
+    "skiPass": ["Epic"]
   },
   {
     "resortName": "Woodward Park City",
@@ -10657,7 +10741,8 @@ var allData = [
     "region": "West Coast",
     "city": "near Enumclaw",
     "videos": [
-      "DLHZ-143s_s"
+      "DLHZ-143s_s",
+      "eEw65ZpAr4o"
     ],
     "position": {
       "lat": 46.935457448813246,
@@ -10667,9 +10752,19 @@ var allData = [
     "id": "429",
     "website": "https://www.crystalmountainresort.com/",
     "resortReview": {
-      "score": "",
-      "link": "",
-      "note": ""
+      "score": 65,
+      "link": "eEw65ZpAr4o",
+      "note": "",
+      "price": "7",
+      "easeOfAccess": "5",
+      "lodging": "2",
+      "chairLifts": "7",
+      "runs": "9",
+      "terrainPark": "5",
+      "food": "7",
+      "employees": "5",
+      "views": "10",
+      "wouldIGoBack": "8",
     },
     "skiPass": ["Ikon"]
   },
